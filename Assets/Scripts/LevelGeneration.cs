@@ -8,7 +8,9 @@ public class LevelGeneration : MonoBehaviour {
     public Transform[] startingPositions;
     public GameObject[] rooms; // index 0 --> closed, index 1 --> LR, index 2 --> LRB, index 3 --> LRT, index 4 --> LRBT
     public GameObject player;
+    public GameObject finish;
     private GameObject firstPlacdRoom;
+    private Vector2 posOfLastRoom;
 
     private int direction;
     private bool stopGeneration;
@@ -29,7 +31,7 @@ public class LevelGeneration : MonoBehaviour {
         transform.position = startingPositions[randStartingPos].position;
         firstPlacdRoom = Instantiate(rooms[1], transform.position, Quaternion.identity);
 
-        direction = Random.Range(1, 6);
+        direction = Random.Range(1, 6); 
     }
 
     private void Update()
@@ -129,11 +131,14 @@ public class LevelGeneration : MonoBehaviour {
                     }
 
                 }
-                
-               
-  
+
+
+
                 Vector2 pos = new Vector2(transform.position.x, transform.position.y - moveIncrement);
                 transform.position = pos;
+                posOfLastRoom = pos;
+
+                print("måske sidste room pos: " + pos);
 
                 // Makes sure the room we drop into has a TOP opening !
                 int randRoom = Random.Range(3, 5);
@@ -144,9 +149,13 @@ public class LevelGeneration : MonoBehaviour {
             else {
                 stopGeneration = true;
                 Instantiate(player, firstPlacdRoom.transform.position, Quaternion.identity);
+                Instantiate(finish, posOfLastRoom, Quaternion.identity);
                 //if (player)
                 print("room 1 pos: " + firstPlacdRoom.transform.position);
                 print("player pos: " + player.transform.position);
+
+                print("Length of rooms: " + (rooms.Length));
+                print("Post of last room: " + rooms[4].transform.position);
             }
             
         }

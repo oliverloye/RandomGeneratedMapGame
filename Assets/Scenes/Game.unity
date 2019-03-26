@@ -167,6 +167,7 @@ MonoBehaviour:
   - {fileID: 1711888464712350, guid: 8228f2f5ddd024e45ae49e9e046cf675, type: 3}
   - {fileID: 1942163711769760, guid: e8b739a65aefeaf4196add5273203e16, type: 3}
   player: {fileID: 428309241544485388, guid: d13099661bf784e01bee2ce9dfd9dcff, type: 3}
+  finish: {fileID: 4206893826876891391, guid: 993256b3d2ef94dc7b15cd56b26d30f2, type: 3}
   moveIncrement: 10
   startTimeBtwSpawn: 0.1
   whatIsRoom:
